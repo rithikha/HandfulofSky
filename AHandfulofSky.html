@@ -6,7 +6,8 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
-    <style>
+        <style>
+
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -22,6 +23,13 @@
 </head>
 <body>
 <div id='map'></div>
+
+<audio controls loop>
+  <source src="StepIntoTheDarkness_SaidTheWhale.ogg" type="audio/ogg">
+  <source src="StepIntoTheDarkness_SaidTheWhale.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
@@ -52,6 +60,6 @@ map.addControl(new mapboxgl.AttributionControl({
 }));
 
 </script>
-
+<
 </body>
 </html>
