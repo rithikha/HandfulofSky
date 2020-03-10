@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8' />
-    <title>A Handful of Sky </title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
-        <style>
+  <meta charset='utf-8' />
+  <title>A Handful of Sky </title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
+  <style>
 
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+  /* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+  #map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  </style>
 </head>
 <body>
-<div id='map'></div>
 
-<audio controls loop>
-  <source src="StepIntoTheDarkness_SaidTheWhale.ogg" type="audio/ogg">
-  <source src="StepIntoTheDarkness_SaidTheWhale.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <audio controls style="display:none" id="audio">
+    <source src="StepIntoTheDarkness_SaidTheWhale.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+    document.getElementById('audio').play();
+  </script>
 
 
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
-    var map = new mapboxgl.Map({
-        container: 'map',
+  <div id='map'></div>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
+  var map = new mapboxgl.Map({
+    container: 'map',
 
-        style: 'mapbox://styles/rithikha/ck7bdfx9g00yy1ip69s6szri4',
-        zoom: 2,
-        center: [1, -10]
-    });
+    style: 'mapbox://styles/rithikha/ck7bdfx9g00yy1ip69s6szri4',
+    zoom: 2,
+    center: [1, -10]
+  });
 
-function rotateCamera(timestamp) {
+  function rotateCamera(timestamp) {
     // rotate at approximately ~10 degrees per second
-    map.rotateTo((timestamp / 300) % 360, {duration: 0});
+    map.rotateTo((timestamp / 400) % 360, {duration: 0});
     // request the next frame of the animation
     requestAnimationFrame(rotateCamera);
-}
-map.on('load', function () {
+  }
+  map.on('load', function () {
     // start the animation
     rotateCamera(0);
-});
-// map navigation controls
-map.addControl(new mapboxgl.NavigationControl());
-// attribution
-map.addControl(new mapboxgl.AttributionControl({
-  compact: false,
-  customAttribution: 'Powered by <a href="https://geoapify.com/">Geoapify</a> | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}));
+  });
+
 
 </script>
-<
 </body>
 </html>
