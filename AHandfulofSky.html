@@ -2,73 +2,126 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>A Handful of Sky </title>
+  <title>A Handful of Stars </title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
 
   <style>
   /*  create map element*/
-      body { margin-right:5%; margin-left:5%; padding:0; }
-      #map { position:absolute; left:350px; top:150px; bottom:150px; width:100%; }
+  body { margin-right:2%; margin-left:5%; padding:0; }
+  #map { position:absolute; left:460px; top:170px; bottom:150px; width:100%; }
+  #constellationTitle {position:absolute; left:78px; top:320px; bottom:150px; width:100%;  }
+  #constellationText {position:absolute; left:78px; top:330px; bottom:150px; width:20%;  }
+  #starmap {
+    position:absolute;
+    left:78px;
+    top:370px;
+  }
 
   h1 {
-  font: 30px avenir, sans-serif;
-  color: black;
-}
+    font: 30px avenir, sans-serif;
+    color: black;
+  }
+
+
   </style>
 
 </head>
 
-<body bgcolor= "white">
+<body bgcolor= white>
 
-<section style="position: left">
-  <h1 fontfamily=sans serif> A HANDFUL OF SKY </h1>
-</section>
-<p> <font color="black" face="avenir">
-  “Life would be impossible on such a planet. It wouldn't get enough heat and light, and if it rotated there would be total darkness half of every day.
+
+    <h1 font-family=sans serif> A HANDFUL OF SKY </h1>
+  <p> <font color="black" face="avenir">
+    “Life would be impossible on such a planet. It wouldn't get enough heat and light, and if it rotated there would be total darkness half of every day.
     There wouldn't be any native inhabitants. You couldn't expect life --- which is fundamentally dependent on light --- to develop under such extreme conditions
-     of light deprivation. Half of every axial rotation spent in Darkness! No, nothing could exist under conditions like that.”
-     <br>
-     &emsp;<i> ― Isaac Asimov, Nightfall</i>
-</font>
+    of light deprivation. Half of every axial rotation spent in Darkness! No, nothing could exist under conditions like that.”
+    <br>
+    &emsp;<i> ― Isaac Asimov, Nightfall</i>
+  </font>
 </p>
 </section>
 
- <!-- creating controls to play audio - autoloop is turned on -->
-<div>
+<!-- creating controls to play audio - autoloop is turned on -->
+<div position:absolute; left:78px; top:330px; bottom:150px; width:20%;"">
   <audio controls loop>
     <source src="EndoftheWorld.ogg" type="audio/ogg">
-    <source src="EndoftheWorld.mp3" type="audio/mpeg">
-    <source src="EndoftheWorld.wav" type="audio/mpeg">
-      Your browser does not support the audio element.
-  </audio>
-</div>
+      <source src="EndoftheWorld.mp3" type="audio/mpeg">
+        <source src="EndoftheWorld.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
 
-  <div id="map" style="border-radius: 100%; width: 55%; height: 70%"></div>
-  <script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
-  var map = new mapboxgl.Map({
-    container: 'map',
+      <div id="constellationTitle"> <font color=#0e4995 face="avenir"><b>CONSTELLATION MAP <br></b>
+      </font></div>
 
-    style: 'mapbox://styles/rithikha/ck7bdfx9g00yy1ip69s6szri4',
-    zoom: 2,
-    center: [1, -10]
+      <div id="constellationText" style="font-size: 13px;"> <font color=#0e4995 face="avenir"><p> People have been fascinated by the sky since time immemorial.
+        The stars in particular have captured human imagination, crossing physical and cultural boundaries, and serving as muses to
+        <a href="https://www.poetseers.org/the-romantics/william-wordsworth/library-2/the-stars-are-mansions-built-by-natures-hand/">
+          Shakespeare</a> and <a href="https://en.wikipedia.org/wiki/Annie_Jump_Cannon">Cannon</a> alike.
+          <br>
+          <br><i>Click on the constellations</i> →
+        <br>
+        <br>
+        <font color=#0e4995 face="avenir" font-size="12"><b>Music</b>:<i> End of the World by Benh Zeitlin & Dan Romer (Beasts of the Southern Wild soundtrack)<i>
+       </p>
+     </font>
+   </div>
+
+      <div id="map" style="border-radius: 70%; width: 65%; height: 72%"></div>
+
+      <script>
+      mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/rithikha/ck7bdfx9g00yy1ip69s6szri4',
+        zoom: 2,
+        center: [1, -10]
+      });
+
+
+      function rotateCamera(timestamp) {
+        // rotate at approximately ~10 degrees per second
+        map.rotateTo((timestamp / 450) % 360, {duration: 0});
+        // request the next frame of the animation
+        requestAnimationFrame(rotateCamera);
+      }
+
+      map.on('load', function () {
+        // start the animation
+        rotateCamera(0);
+
+        map.addLayer({
+  'id': 'asterisms-f-dvtsaw',
+  'type': 'fill',
+  'source': 'HandfulOfSky'
   });
 
-  function rotateCamera(timestamp) {
-    // rotate at approximately ~10 degrees per second
-    map.rotateTo((timestamp / 400) % 360, {duration: 0});
-    // request the next frame of the animation
-    requestAnimationFrame(rotateCamera);
-  }
-  map.on('load', function () {
-    // start the animation
-    rotateCamera(0);
+  // When a click event occurs on a feature in the states layer, open a popup at the
+  // location of the click, with description HTML from its properties.
+  map.on('click', 'asterisms-f-dvtsaw', function(e) {
+  new mapboxgl.Popup()
+  .setLngLat(e.lngLat)
+  .setHTML(e.features[0].properties.CONSNAME)
+  .addTo(map);
+  });
+
+  // Change the cursor to a pointer when the mouse is over the states layer.
+  map.on('mouseenter', 'asterisms-f-dvtsaw', function() {
+  map.getCanvas().style.cursor = 'pointer';
+  });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'asterisms-f-dvtsaw', function() {
+  map.getCanvas().style.cursor = '';
+  });
   });
 
 
-</script>
+  </script>
 </body>
 </html>
