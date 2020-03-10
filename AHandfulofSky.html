@@ -6,33 +6,47 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
+
+
   <style>
+  /*  create map element*/
+      body { margin-right:5%; margin-left:5%; padding:0; }
+      #map { position:absolute; left:350px; top:150px; bottom:150px; width:100%; }
 
-  /* Always set the map height explicitly to define the size of the div
-  * element that contains the map. */
-  #map {
-    height: 100%;
-  }
-  /* Optional: Makes the sample page fill the window. */
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+  h1 {
+  font: 30px avenir, sans-serif;
+  color: black;
+}
   </style>
+
 </head>
-<body>
 
-  <audio controls style="display:none" id="audio">
-    <source src="StepIntoTheDarkness_SaidTheWhale.mp3" type="audio/mpeg">
+<body bgcolor= "white">
+
+<section style="position: left">
+  <h1 fontfamily=sans serif> A HANDFUL OF SKY </h1>
+</section>
+<p> <font color="black" face="avenir">
+  “Life would be impossible on such a planet. It wouldn't get enough heat and light, and if it rotated there would be total darkness half of every day.
+    There wouldn't be any native inhabitants. You couldn't expect life --- which is fundamentally dependent on light --- to develop under such extreme conditions
+     of light deprivation. Half of every axial rotation spent in Darkness! No, nothing could exist under conditions like that.”
+     <br>
+     &emsp;<i> ― Isaac Asimov, Nightfall</i>
+</font>
+</p>
+</section>
+
+ <!-- creating controls to play audio - autoloop is turned on -->
+<div>
+  <audio controls loop>
+    <source src="EndoftheWorld.ogg" type="audio/ogg">
+    <source src="EndoftheWorld.mp3" type="audio/mpeg">
+    <source src="EndoftheWorld.wav" type="audio/mpeg">
       Your browser does not support the audio element.
-    </audio>
-    <script>
-    document.getElementById('audio').play();
-  </script>
+  </audio>
+</div>
 
-
-  <div id='map'></div>
+  <div id="map" style="border-radius: 100%; width: 55%; height: 70%"></div>
   <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
   var map = new mapboxgl.Map({
