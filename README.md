@@ -1,11 +1,13 @@
 # HandfulofSky
 
-![Image description](link-to-image)
-Caption: 
+![Screenshot](https://github.com/rithikha/HandfulofSky/blob/master/screenshot.png)
+Caption: The map has been panned to the southern hemisphere near New Zealand where the circumpolar constellation, Centaurus, can be seen.
 
-**Project Link:** https://rithikha.github.io/HandfulofSky/index.html
+Project Link: https://rithikha.github.io/HandfulofSky/index.html
 
-**Reflective Analysis ** 
+
+Reflective Analysis
+
 My little sister, like most children, is absolutely awestruck by the sky at night. Our house is at the boundary of the city and the absence of bright city lights makes for some excellent star-gazing. The goal of this map is not to answer any questions but rather to create a place for quiet and consequently, a space for meaningful questions to emerge.
 While in my last lab and previous assignments I focused on and specifically emphasized data visualization within the map, my aim for this project was more to create an emotional experience through a digital environment. The map is just one of many elements used to transport (and in some ways force) the ever-busy modern user (anyone and everyone) into another headspace. So while this project used Mapbox GL JS to create and introduce pop-up interactivity and map camera animation, it also heavily relied on HTML and CSS to style the page in a particular way. These other elements include appealing to the other senses through music, formatted quotes and text, to provide greater context to the map and further provoke a meditative headspace, as well as the map itself. A border-radius was used  to create a curved border on the map. This, along with the map rotation served to take the user one step closer to feeling like they are peering down at the earth and the stars. 
 
@@ -30,7 +32,8 @@ To complement the Nightfall quote I also wanted to change the mapstyle from a ni
     setInterval(switchMap, 12000);
 
 
-**Collaborations**
+Collaborations:
+
 Contributed to a couple critiques and mostly suggested minor design considerations for Vicky, Jassen and Lucas. Got some help from Vicky for making pop-ups in Mapbox, but I ended up following along this tutorial instead: https://docs.mapbox.com/mapbox-gl-js/example/polygon-popup-on-click/
 Feedback from Vicky and Jassen included adjusting the margins for the map (changes made) and using a different background colour so it’s not so glaringly white.
 The project was inspired by a much cooler map, the Star Atlas (https://staratlas.com/). I also used this tutorial to animate the map: https://www.youtube.com/watch?v=a8aplYWsj70
