@@ -6,22 +6,16 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.53.1/mapbox-gl.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
 
   <style>
   /*  create map element*/
-  body { margin-right:2%; margin-left:5%; padding:0; }
-  #map { position:absolute; left:460px; top:170px; bottom:150px; width:100%; }
-  #constellationTitle {position:absolute; left:78px; top:320px; bottom:150px; width:100%;  }
-  #constellationText {position:absolute; left:78px; top:330px; bottom:150px; width:20%;  }
-  #starmap {
-    position:absolute;
-    left:78px;
-    top:370px;
-  }
+  body { margin-right:2%; margin-left:2%; padding:0;}
+  #map { position:absolute; left:360px; top:160px; bottom:150px; width:100%; }
+  #constellationTitle {position:absolute; top:320px; bottom:150px; width:100%;  }
+  #constellationText {position:absolute;  top:330px; bottom:150px; width:20%;  }
 
+html {overflow: scroll; overflow-y: hidden;}
   h1 {
     font: 30px avenir, sans-serif;
     color: black;
@@ -32,7 +26,7 @@
 
 </head>
 
-<body bgcolor= white>
+<body bgcolor= #FFFFF0>
 
 
     <h1 font-family=sans serif> A HANDFUL OF SKY </h1>
@@ -49,9 +43,9 @@
 <!-- creating controls to play audio - autoloop is turned on -->
 <div position:absolute; left:78px; top:330px; bottom:150px; width:20%;"">
   <audio controls loop>
-    <source src="EndoftheWorld.ogg" type="audio/ogg">
-      <source src="EndoftheWorld.mp3" type="audio/mpeg">
-        <source src="EndoftheWorld.wav" type="audio/mpeg">
+    <source src="EndoftheWorld.ogg" autoplay type="audio/ogg">
+      <source src="EndoftheWorld.mp3"  autoplay type="audio/mpeg">
+        <source src="EndoftheWorld.wav" autoplay type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
@@ -69,12 +63,13 @@
           <br><i>Explore the map & click on the constellations</i> →
         <br>
         <br>
+        <br>
         <font color=#0e4995 face="avenir" font-size="12"><b>Music</b>: <i><a href="https://www.youtube.com/playlist?list=PLyWSU5WglvVMMHfuWBQyReMpC27CkdEri">End of the World<a></i> by Benh Zeitlin & Dan Romer (Beasts of the Southern Wild soundtrack)
        </p>
      </font>
    </div>
 
-      <div id="map" style="border-radius: 70%; width: 65%; height: 72%"></div>
+      <div id="map" style="border-radius: 70%; width: 72%; height: 72%"></div>
 
       <script>
       mapboxgl.accessToken = 'pk.eyJ1Ijoicml0aGlraGEiLCJhIjoiY2s2cG1uY2k2MHlmNzNkcGdmM3lnZ3NqMiJ9.JYJvv1Pq0hfNK-9ot-0_aQ';
@@ -111,19 +106,10 @@
   .setHTML(e.features[0].properties.CONSNAME)
   .addTo(map);
   });
-
-  // Change the cursor to a pointer when the mouse is over the states layer.
-  map.on('mouseenter', 'asterisms-f-dvtsaw', function() {
-  map.getCanvas().style.cursor = 'pointer';
-  });
-
-  // Change it back to a pointer when it leaves.
-  map.on('mouseleave', 'asterisms-f-dvtsaw', function() {
-  map.getCanvas().style.cursor = '';
-  });
-  });
+});
 
 
   </script>
+
 </body>
 </html>
