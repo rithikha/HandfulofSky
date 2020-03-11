@@ -17,7 +17,12 @@ Future Considerations - I wanted to add another layer containing only the stars 
 
 I couldn’t figure out how to make the music autoplay as soon as the webpage was loaded. The audio is set to repeat however.
 
-To complement the Nightfall quote I also wanted to change the mapstyle from a night style to a day style every rotation. I couldn’t get this to work but here’s the code I previously tried within **map.on('load', function () { **:
+To complement the Nightfall quote I also wanted to change the mapstyle from a night style to a day style every rotation:
+
+![Screenshot](https://github.com/rithikha/HandfulofSky/blob/master/morningstyle.png)
+
+
+ I couldn’t get this to work but here’s the code I previously tried within **map.on('load', function () { **:
 
     function switchMap() {
       currentStyle = String(map.getStyle());
